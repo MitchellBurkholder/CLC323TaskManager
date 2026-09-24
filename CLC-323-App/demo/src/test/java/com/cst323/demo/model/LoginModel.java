@@ -6,11 +6,11 @@ import jakarta.validation.constraints.Size;
 public class LoginModel {
 
 	@NotNull(message="User name is required field")
-	@Size(min=1, max=32, message="User name must be bewteen 1 & 32 characters")
+	@Size(min=1, max=32, message="User name must be between 1 & 32 characters")
 	private String username;
 	
 	@NotNull(message="Password is required field")
-	@Size(min=1, max=32, message="Password must be bewteen 1 & 32 characters")
+	@Size(min=1, max=32, message="Password must be between 1 & 32 characters")
 	private String password;
 	
 	public String getUsername() {
