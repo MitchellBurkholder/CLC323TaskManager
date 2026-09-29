@@ -1,6 +1,5 @@
 package com.cst323.demo.controller;
 
-import com.cst323.demo.business.LoginInterface;
 import com.cst323.demo.business.RegistrationServiceInterface;
 import com.cst323.demo.model.RegistrationModel;
 import jakarta.validation.Valid;
@@ -43,7 +42,7 @@ public class RegistrationController {
             return "Registration";
         }
 
-        registrationService.registerUser(registrationModel);
+        registrationService.registerUser();
         // this is here so the login info can be added to the database 
         loginService.create(registrationModel.getUsername(), registrationModel.getPassword());
 

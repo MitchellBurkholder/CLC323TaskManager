@@ -3,6 +3,8 @@ package com.cst323.demo.model;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDateTime;
+
 public class RegistrationModel {
 	
 	@NotNull(message="first name is required a field")
@@ -24,6 +26,9 @@ public class RegistrationModel {
 	@NotNull(message="Password is required a field")
 	@Size(min=1, max=32, message="Password must be between 1 & 32 characters")
 	private String password;
+
+	@NotNull(message="Add a date")
+	private LocalDateTime createdAt;
 	
 	public String getFirstName() {
 		return firstName;
@@ -50,4 +55,7 @@ public class RegistrationModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getPassword() { return this.password;}
+	public LocalDateTime getCreatedAt() { return createdAt;}
+	public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt;}
 }
