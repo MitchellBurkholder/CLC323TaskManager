@@ -1,0 +1,27 @@
+common.html<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar</title>
+</head>
+<body>
+<nav th:fragment="navbar">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+      <ul>
+        <li><a class="nav-brand" th:href="@{/}">MediaGrabBag</a></li>
+        <div class="nav-product">
+          <li><a th:href="@{/placeholder}">BOOKS</a></li>
+          <li><a th:href="@{/placeholder}">TV/MOVIES</a></li>
+          <li><a th:href="@{/placeholder}">VIDEO GAMES</a></li>
+        </div>
+        <div class="nav-login">
+          <li><a th:href="@{/login/}">Login</a></li>
+          <li><a th:href="@{/register/}">Register</a></li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

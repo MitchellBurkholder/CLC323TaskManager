@@ -1,16 +1,14 @@
 package com.cst323.demo;
 
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@ComponentScan({ "com.cst323.demo"})
-@SpringBootApplication
+@SpringBootTest(classes = DemoApplication.class)
 class DemoApplicationTests {
 
-	public static void main(String[] args)  {
-		SpringApplication.run(DemoApplicationTests.class, args);
+	@Test
+	void contextLoads() {
 	}
 
 }

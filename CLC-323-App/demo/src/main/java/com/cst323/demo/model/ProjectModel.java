@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class ProjectModel {
 
     @NotNull(message="first name is required a field")
-    @Size(min=1, max=100, message="first name must be between 1 & 100 characters")
+    @Size(min=1, max=100, message=" name must be between 1 & 100 characters")
     private String name;
 
     @NotNull(message="You have to explain what the project is for")

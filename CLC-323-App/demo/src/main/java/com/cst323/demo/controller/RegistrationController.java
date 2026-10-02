@@ -1,6 +1,5 @@
 package com.cst323.demo.controller;
 
-import com.cst323.demo.business.RegistrationServiceInterface;
 import com.cst323.demo.model.RegistrationModel;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -10,18 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.cst323.demo.business.RegistrationServiceInterface;
 
 @Controller
 @RequestMapping("/register")
 public class RegistrationController {
 
     private final RegistrationServiceInterface registrationService;
-    private LoginInterface loginService;
-    
-    // constructor needed for this controller 
-    public RegistrationController(RegistrationServiceInterface registrationService, LoginInterface loginService) {
+
+    // constructor needed for this controller
+    public RegistrationController(RegistrationServiceInterface registrationService) {
         this.registrationService = registrationService;
-        this.loginService = loginService;
     }
 
     @GetMapping("/")
@@ -42,10 +40,7 @@ public class RegistrationController {
             return "Registration";
         }
 
-        registrationService.registerUser();
-        // this is here so the login info can be added to the database 
-        loginService.create(registrationModel.getUsername(), registrationModel.getPassword());
-
+        registrationService.registerUser(registrationModel);
         return "redirect:/login/";
     }
 }
