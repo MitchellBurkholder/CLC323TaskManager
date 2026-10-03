@@ -1,0 +1,29 @@
+body
+{
+    background-color: #4c4e56;
+    font-family: "Lucida Console", Monaco, monospace;
+    color: #b2d8e8;
+}
+
+input, select
+{
+    color: #1e3f3f !important;
+}
+
+.hover-text {
+    padding: 8px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+}
+
+table.display-products{
+    background-color: #b2d8e8;
+    color: #1e3f3f;
+    border: 2px solid #222427;
+}
+
+table.display-products td, table.display-products th {
+    padding: 8px;
+    border: 2px solid #222427;
+}

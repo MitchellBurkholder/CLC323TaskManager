@@ -1,0 +1,55 @@
+ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    background-color: #222427;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav
+{
+    list-style: none;
+    /*border: thin solid #b2d8e8;*/
+}
+
+.left, .nav-product, .nav-login
+{
+    display: flex;
+    gap: 1rem;
+    font-size: 1.3rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.nav-product
+{
+    display: flex;
+    justify-content: center;
+}
+
+.nav-product li a
+{
+    color: #6c9bd5;
+}
+
+.nav-brand
+{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+ul li a
+{
+    color: #b2d8e8;
+    display: block;
+    text-decoration: none;
+}
+
+ul li a:hover
+{
+    background-color: #F0F0F0;
+    color: #222427;
+}
