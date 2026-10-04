@@ -24,7 +24,8 @@
           <div class="navbar-nav ms-auto gap-lg-1 py-2 py-lg-0">
             <a
               class="nav-link"
-              th:classappend="${activePage == 'home'} ? ' active' : ''"
+              th:classappend="${activePage == 'home'}
+                                    ? ' active' : ''"
               th:href="@{/}"
             >
               Home
@@ -32,7 +33,26 @@
 
             <a
               class="nav-link"
-              th:classappend="${activePage == 'login'} ? ' active' : ''"
+              th:classappend="${activePage == 'tasks'}
+                                    ? ' active' : ''"
+              th:href="@{/tasks}"
+            >
+              Tasks
+            </a>
+
+            <a
+              class="nav-link"
+              th:classappend="${activePage == 'create-task'}
+                                    ? ' active' : ''"
+              th:href="@{/tasks/new}"
+            >
+              Create Task
+            </a>
+
+            <a
+              class="nav-link"
+              th:classappend="${activePage == 'login'}
+                                    ? ' active' : ''"
               th:href="@{/login}"
             >
               Login
@@ -40,7 +60,8 @@
 
             <a
               class="nav-link"
-              th:classappend="${activePage == 'register'} ? ' active' : ''"
+              th:classappend="${activePage == 'register'}
+                                    ? ' active' : ''"
               th:href="@{/register/}"
             >
               Register

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tasks | Cloud Task Manager</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" th:href="@{/navbar.css}" />
+    <link rel="stylesheet" th:href="@{/basic.css}" />
+  </head>
+
+  <body>
+    <div th:replace="~{fragments/Navbar :: navbar('tasks')}"></div>
+
+    <main class="container py-5">
+      <div
+        class="alert alert-success alert-dismissible fade show"
+        role="alert"
+        th:if="${successMessage}"
+      >
+        <span th:text="${successMessage}">
+          The task was saved successfully.
+        </span>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div
+        class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4"
+      >
+        <div>
+          <p class="hero-eyebrow mb-2">Task workspace</p>
+
+          <h1 class="h2 fw-bold mb-1">Tasks</h1>
+
+          <p class="text-secondary mb-0">
+            Review priorities, deadlines, and assigned work.
+          </p>
+        </div>
+
+        <a class="btn btn-primary btn-lg" th:href="@{/tasks/new}">
+          Create Task
+        </a>
+      </div>
+
+      <section class="task-table-card shadow-sm">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover align-middle">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Due Date</th>
+                <th scope="col" class="text-end">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr th:if="${#lists.isEmpty(tasks)}">
+                <td colspan="5" class="text-center text-secondary py-5">
+                  No tasks have been created. Select Create Task to add one.
+                </td>
+              </tr>
+
+              <tr th:each="task : ${tasks}">
+                <td class="fw-semibold" th:text="${task.title}">Task title</td>
+
+                <td
+                  class="task-description text-secondary"
+                  th:text="${task.description}"
+                >
+                  Task description
+                </td>
+
+                <td>
+                  <span
+                    class="priority-badge"
+                    th:classappend="
+                                ${task.priority == 'High'}
+                                ? ' priority-high'
+                                : (${task.priority == 'Medium'}
+                                ? ' priority-medium'
+                                : ' priority-low')"
+                    th:text="${task.priority}"
+                  >
+                    Medium
+                  </span>
+                </td>
+
+                <td th:text="${task.dueDate}">2027-01-01T12:00</td>
+
+                <td class="text-end text-nowrap">
+                  <a
+                    class="btn btn-sm btn-outline-primary"
+                    th:href="@{/tasks/edit/{id}(id=${task.id})}"
+                  >
+                    Update
+                  </a>
+
+                  <form
+                    class="d-inline"
+                    th:action="@{/tasks/delete/{id}(id=${task.id})}"
+                    method="post"
+                  >
+                    <button
+                      class="btn btn-sm btn-outline-danger"
+                      type="submit"
+                      onclick="return confirm('Delete this task?');"
+                    >
+                      Delete
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
