@@ -17,6 +17,10 @@ public class TaskModel {
     @Size(min=1, max=20, message="priority must be between 1 & 20 characters")
     private String priority;
 
+    @NotNull(message = "a person needed to be assigned to this")
+    @Size(min=1, max=100, message="priority must be between 1 & 20 characters")
+    private String fullName;
+
     @NotNull(message="Date required")
     private LocalDateTime dueDate;
 
@@ -52,5 +56,11 @@ public class TaskModel {
         this.dueDate = dueDate;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 }

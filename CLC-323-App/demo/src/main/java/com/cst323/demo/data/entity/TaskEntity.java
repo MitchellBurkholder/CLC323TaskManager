@@ -11,9 +11,8 @@ public class TaskEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "assigned_user_id", referencedColumnName = "user_id")
-    private long assigned_user_id;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Column(name = "title")
     private String title;
@@ -73,14 +72,6 @@ public class TaskEntity {
         this.dueDate = dueDate;
     }
 
-    public long getAssigned_user_id() {
-        return assigned_user_id;
-    }
-
-    public void setAssigned_user_id(long assigned_user_id) {
-        this.assigned_user_id = assigned_user_id;
-    }
-
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
@@ -95,5 +86,13 @@ public class TaskEntity {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }
