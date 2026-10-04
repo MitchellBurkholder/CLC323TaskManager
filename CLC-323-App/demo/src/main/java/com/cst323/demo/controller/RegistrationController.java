@@ -22,10 +22,11 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public String displayRegisterForm(Model model) {
         model.addAttribute("title", "Registration Form");
         model.addAttribute("registrationModel", new RegistrationModel());
+        System.out.println("help");
         return "Registration";
     }
 
@@ -35,12 +36,15 @@ public class RegistrationController {
             BindingResult bindingResult,
             Model model) {
 
+        System.out.println("is this working?");
+
         if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(System.out::println);
             model.addAttribute("title", "Registration Form");
             return "Registration";
         }
 
         registrationService.registerUser(registrationModel);
-        return "redirect:/login/";
+        return "redirect:/login";
     }
 }

@@ -26,7 +26,7 @@ public class SecurityConfig {
                 // Configure authorization rules
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/login", "/register/").permitAll()
+                        .requestMatchers( "/login", "/register/", "/register/doRegistration").permitAll()
                         .anyRequest().authenticated()
                 )
                 // Configure login form

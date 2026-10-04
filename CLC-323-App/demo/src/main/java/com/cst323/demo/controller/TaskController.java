@@ -45,7 +45,7 @@ public class TaskController {
         return showTasks(model);
     }
 
-    @GetMapping("/editTask/{id}")
+    /*@GetMapping("/editTask/{id}")
     public String editTaskForm(@PathVariable int id, Model model)
     {
         E product = productService.findById(id);
@@ -54,7 +54,7 @@ public class TaskController {
         model.addAttribute("productModel", product);
 
         return "EditTask";
-    }
+    }*/
 
     @PostMapping("/doUpdateProduct")
     public String updateProduct(

@@ -1,29 +1,12 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-	<body>
-		<div th:fragment="header">
-			<nav class="navbar" th:fragment="navbar">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<a class="navbar-brand" th:href="@{/}">MediaGrabBag</a>
-					</div>
-					<div class="navbar-collapse collapse">
-						<ul class="nav navbar-nav">
-							<li><a th:href="@{/product/addProduct}">Add Product</a></li>
-							<li><a th:href="@{/product/allBooks}">BOOKS</a></li>
-							<li><a th:href="@{/product/allMoviesOrShows}">TV/MOVIES</a></li>
-							<li><a th:href="@{/product/allVideoGames}">VIDEO GAMES</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li><a th:href="@{/login}">Login</a></li>
-							<li><a th:href="@{/register/}">Register</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-			<h2 th:text="${title}">Default Message Text</h2><br/>
-		</div>
-		<div th:fragment="footer">
-		</div>
-	</body>
-</html>
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <header th:fragment="header(activePage)">
+      <div th:replace="~{fragments/Navbar :: navbar(${activePage})}"></div>
+    </header>
 
+    <footer class="page-footer container text-center py-4" th:fragment="footer">
+      Cloud Task Manager
+    </footer>
+  </body>
+</html>

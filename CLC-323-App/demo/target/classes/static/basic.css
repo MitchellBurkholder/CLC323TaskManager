@@ -1,29 +1,112 @@
-body
-{
-    background-color: #4c4e56;
-    font-family: "Lucida Console", Monaco, monospace;
-    color: #b2d8e8;
+:root {
+  --ctm-primary: #0d6efd;
+  --ctm-primary-dark: #0a58ca;
+  --ctm-text: #1f2937;
+  --ctm-muted: #6b7280;
+  --ctm-surface: #ffffff;
+  --ctm-background: #f4f7fb;
+  --ctm-border: #dfe5ec;
 }
 
-input, select
-{
-    color: #1e3f3f !important;
+body {
+  min-height: 100vh;
+  background: var(--ctm-background);
+  color: var(--ctm-text);
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
 }
 
-.hover-text {
-    padding: 8px;
-    border: 1px solid #ccc;
-    display: inline-block;
-    cursor: pointer;
+main {
+  min-height: calc(100vh - 72px);
 }
 
-table.display-products{
-    background-color: #b2d8e8;
-    color: #1e3f3f;
-    border: 2px solid #222427;
+.hero-panel {
+  overflow: hidden;
+  border: 1px solid var(--ctm-border);
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #eef5ff 100%);
 }
 
-table.display-products td, table.display-products th {
-    padding: 8px;
-    border: 2px solid #222427;
+.hero-eyebrow {
+  color: var(--ctm-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.feature-card,
+.auth-card {
+  border: 1px solid var(--ctm-border);
+  border-radius: 0.9rem;
+  background: var(--ctm-surface);
+}
+
+.feature-card {
+  height: 100%;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.75rem 1.75rem rgba(31, 41, 55, 0.1);
+}
+
+.feature-number {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: #e7f1ff;
+  color: var(--ctm-primary-dark);
+  font-weight: 700;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 680px;
+}
+
+.auth-card-narrow {
+  max-width: 520px;
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+.form-control,
+.form-select {
+  min-height: 46px;
+  border-color: #cfd7e3;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.required-marker {
+  color: #b02a37;
+}
+
+.page-footer {
+  color: var(--ctm-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 767.98px) {
+  .hero-panel .display-5 {
+    font-size: 2.25rem;
+  }
 }

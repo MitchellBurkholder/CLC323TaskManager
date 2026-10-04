@@ -5,11 +5,13 @@ import com.cst323.demo.model.TaskModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.cst323.demo.data.TaskRepo;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class TaskService implements TaskServiceInterface{
     @Autowired
     private TaskRepo repo;

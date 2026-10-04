@@ -31,14 +31,20 @@ public class RegistrationService implements RegistrationServiceInterface, UserDe
 
     @Override
     public void registerUser(RegistrationModel registrationModel) {
+
         UserEntity user = new UserEntity();
-        user.setFirstName(registrationModel.getFirstName());
-        user.setLastName(registrationModel.getLastName());
-        user.setEmail(registrationModel.getEmail());
-        user.setRole(registrationModel.getRole());
-        user.setPassword(passwordEncoder.encode(registrationModel.getPassword()));
-        user.setCreatedAt(LocalDateTime.now());
-        repo.save(user);
+
+            user.setFirstName(registrationModel.getFirstName());
+            user.setLastName(registrationModel.getLastName());
+            user.setEmail(registrationModel.getEmail());
+            user.setRole(registrationModel.getRole());
+            user.setPassword(passwordEncoder.encode(registrationModel.getPassword()));
+            user.setCreatedAt(LocalDateTime.now());
+
+        if (user.getFirstName() != null){
+            repo.save(user);
+            System.out.println("user is saved");
+        }
     }
 
     @Override
