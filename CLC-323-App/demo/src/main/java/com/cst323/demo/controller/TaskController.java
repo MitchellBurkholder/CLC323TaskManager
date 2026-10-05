@@ -18,17 +18,17 @@ public class TaskController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @GetMapping("/Tasks")
+    @GetMapping("/")
     public String showTasks(Model model){
-        model.addAttribute("Tasks", taskService.showAll());
-        return "tasks";
+        model.addAttribute("tasks", taskService.showAll());
+        return "TaskList";
     }
 
     @GetMapping("/AddTask")
     public String addTaskForm(Model model){
         model.addAttribute("title", "Add Task Form");
         model.addAttribute("taskModel", new TaskModel());
-        return "AddTask";
+        return "CreateTask";
     }
 
     @PostMapping("/doAddTask")
@@ -38,17 +38,17 @@ public class TaskController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("title", "Add Task Form");
-            return "AddTask";
+            return "TaskList";
         }
 
         taskService.createTask(taskModel);
-        return showTasks(model);
+        return "TaskList";
     }
 
     /*@GetMapping("/editTask/{id}")
     public String editTaskForm(@PathVariable int id, Model model)
     {
-        E product = productService.findById(id);
+        Entity product = productService.findById(id);
 
         model.addAttribute("title", "Edit Product Form");
         model.addAttribute("productModel", product);

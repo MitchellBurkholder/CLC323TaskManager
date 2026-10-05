@@ -32,7 +32,7 @@
           </div>
 
           <form
-            th:action="@{/tasks/save}"
+            th:action="@{/Tasks/doAddTask}"
             th:object="${taskModel}"
             method="post"
           >
@@ -59,6 +59,31 @@
                 th:errors="*{title}"
               ></div>
             </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="fullName">
+                Full Name
+                <span class="required-marker">*</span>
+              </label>
+
+              <input
+                      class="form-control"
+                      id="fullName"
+                      type="text"
+                      maxlength="100"
+                      required
+                      th:field="*{fullName}"
+                      th:classappend="${#fields.hasErrors('fullName')}
+                                        ? 'is-invalid'"
+              />
+
+              <div
+                      class="invalid-feedback"
+                      th:if="${#fields.hasErrors('fullName')}"
+                      th:errors="*{fullName}"
+              ></div>
+            </div>
+
 
             <div class="mb-3">
               <label class="form-label" for="description">

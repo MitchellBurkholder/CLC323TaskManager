@@ -35,7 +35,7 @@
               class="nav-link"
               th:classappend="${activePage == 'tasks'}
                                     ? ' active' : ''"
-              th:href="@{/tasks}"
+              th:href="@{/Tasks/}"
             >
               Tasks
             </a>
@@ -44,7 +44,7 @@
               class="nav-link"
               th:classappend="${activePage == 'create-task'}
                                     ? ' active' : ''"
-              th:href="@{/tasks/new}"
+              th:href="@{/Tasks/AddTask}"
             >
               Create Task
             </a>

@@ -52,10 +52,6 @@ public class RegistrationService implements RegistrationServiceInterface, UserDe
         repo.deleteById(user.getId());
     }
 
-    /*private UserEntity nameFinder(String firstName){
-        return repo.findByFirstName(firstName);
-    }*/
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = repo.findByEmail(username);
