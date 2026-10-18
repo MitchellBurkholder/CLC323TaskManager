@@ -10,10 +10,6 @@ public class TaskModel {
 
     private Long id;
 
-    // Database relationship fields
-    private Long projectId;
-    private Long assignedUserId;
-
     @NotNull(message = "Title required")
     @Size(min = 1, max = 20, message = "Title must be between 1 and 20 characters")
     private String title;
@@ -32,29 +28,12 @@ public class TaskModel {
     @NotNull(message = "Date required")
     private LocalDateTime dueDate;
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
-    }
-
-    public Long getAssignedUserId() {
-        return assignedUserId;
-    }
-
-    public void setAssignedUserId(Long assignedUserId) {
-        this.assignedUserId = assignedUserId;
     }
 
     public String getTitle() {

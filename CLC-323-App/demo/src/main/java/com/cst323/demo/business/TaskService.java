@@ -35,8 +35,7 @@ public class TaskService implements TaskServiceInterface {
         List<TaskEntity> allTasks = repo.findAll();
         List<TaskModel> displayList = new ArrayList<>();
 
-        allTasks.forEach(item -> displayList.add(
-                modelMapper.map(item, TaskModel.class)));
+        allTasks.forEach(item -> displayList.add(modelMapper.map(item, TaskModel.class)));
 
         log.info("Exiting showAll method");
         return displayList;
@@ -47,12 +46,6 @@ public class TaskService implements TaskServiceInterface {
         log.info("Entering createTask method");
 
         TaskEntity entity = new TaskEntity();
-
-        // Temporary IDs for the confirmed test records.
-        // Replace with authenticated user and selected project
-        // before supporting multiple users/projects.
-        entity.setProjectId(1L);
-        entity.setAssignedUserId(1L);
 
         entity.setCreatedAt(LocalDateTime.now());
         entity.setUpdatedAt(LocalDateTime.now());
@@ -76,7 +69,6 @@ public class TaskService implements TaskServiceInterface {
                         HttpStatus.NOT_FOUND, "Task not found"));
 
         log.info("Exiting getTask for id={}", id);
-
         return modelMapper.map(entity, TaskModel.class);
     }
 
@@ -94,8 +86,6 @@ public class TaskService implements TaskServiceInterface {
         entity.setPriority(task.getPriority());
         entity.setDueDate(task.getDueDate());
         entity.setUpdatedAt(LocalDateTime.now());
-
-        // Existing project/user IDs are preserved.
 
         repo.save(entity);
 
