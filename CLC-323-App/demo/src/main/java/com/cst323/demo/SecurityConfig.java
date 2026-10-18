@@ -43,7 +43,7 @@ public class SecurityConfig {
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .permitAll()
-                        .logoutSuccessUrl("/login")
+                        .logoutSuccessUrl("/login?logout")
                 ).httpBasic(Customizer.withDefaults());
 
         return http.build();

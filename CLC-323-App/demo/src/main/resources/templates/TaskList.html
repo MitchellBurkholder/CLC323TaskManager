@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <div th:replace="~{fragments/Navbar :: navbar('Tasks')}"></div>
+    <div th:replace="~{fragments/Navbar :: navbar('tasks')}"></div>
 
     <main class="container py-5">
       <div
@@ -64,12 +64,13 @@
                 <th scope="col">Description</th>
                 <th scope="col">Priority</th>
                 <th scope="col">Due Date</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
 
             <tbody>
               <tr th:if="${#lists.isEmpty(tasks)}">
-                <td colspan="5" class="text-center text-secondary py-5">
+                <td colspan="6" class="text-center text-secondary py-5">
                   No tasks have been created. Select Create Task to add one.
                 </td>
               </tr>
@@ -100,6 +101,15 @@
                 </td>
 
                 <td th:text="${task.dueDate}">2027-01-01T12:00</td>
+                <td>
+                  <div class="d-flex gap-2">
+                    <a class="btn btn-sm btn-outline-primary" th:href="@{/Tasks/{id}/edit(id=${task.id})}">Edit</a>
+                    <form th:action="@{/Tasks/{id}/delete(id=${task.id})}" method="post"
+                          onsubmit="return confirm('Delete this task permanently?');">
+                      <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                    </form>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>

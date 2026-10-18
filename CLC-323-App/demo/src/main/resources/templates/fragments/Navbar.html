@@ -53,6 +53,7 @@
               class="nav-link"
               th:classappend="${activePage == 'login'}
                                     ? ' active' : ''"
+              th:if="${!currentUserAuthenticated}"
               th:href="@{/login}"
             >
               Login
@@ -62,10 +63,14 @@
               class="nav-link"
               th:classappend="${activePage == 'register'}
                                     ? ' active' : ''"
+              th:if="${!currentUserAuthenticated}"
               th:href="@{/register/}"
             >
               Register
             </a>
+            <form th:if="${currentUserAuthenticated}" th:action="@{/logout}" method="post" class="d-flex ms-lg-2">
+              <button type="submit" class="btn btn-outline-light btn-sm my-1">Log Out</button>
+            </form>
           </div>
         </div>
       </div>
