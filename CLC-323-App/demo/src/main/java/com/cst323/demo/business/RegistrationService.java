@@ -1,8 +1,9 @@
 package com.cst323.demo.business;
-
 import com.cst323.demo.data.UserRepo;
 import com.cst323.demo.data.entity.UserEntity;
 import com.cst323.demo.model.RegistrationModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +25,8 @@ public class RegistrationService implements RegistrationServiceInterface, UserDe
     private UserRepo repo;
 
     private final BCryptPasswordEncoder passwordEncoder;
+
+    private final static Logger log = LoggerFactory.getLogger(RegistrationService.class);
 
     public RegistrationService(BCryptPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
@@ -49,16 +52,20 @@ public class RegistrationService implements RegistrationServiceInterface, UserDe
 
     @Override
     public void deleteUser(UserEntity user){
+        log.info("entering deleteUser method");
         repo.deleteById(user.getId());
+        log.info("exiting deleteUser method");
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("entering loadUserByUsername");
         UserEntity user = repo.findByEmail(username);
         if (user != null){
             // switch to tilda if
             List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
             authorities.add(new SimpleGrantedAuthority("USER"));
+            log.info("exiting loadUserByUsername");
             return new User(user.getEmail(), user.getPassword(), authorities);
         } else {
             throw new UsernameNotFoundException("Username Not Found");
